@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         recyclerView.setLayoutManager(mLayoutManager);
 
         // Asigna tipo de animación al insertar, borrar..., items
+        // pasando null no realiza ninguna animación
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));

@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
 
         // Instancia del  adaptador
         mAdapter = new LibroAdapter(listaLibros);
+
+
         // Pasamos Listener que nos mandara la view y posición
         // pulsada en el recycler view
         // Estos datos serán recogidos en el metod onclick(..) sobreescrito  más abajo
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         recyclerView.setLayoutManager(mLayoutManager);
 
         // Asigna tipo de animación al insertar, borrar..., items
-        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
@@ -133,11 +136,18 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         });
     }
 
+    // Implementamos método onClick del interface ItemClickListener
     @Override
     public void onClick(View view, int posicion) {
         // Aqui recogemos el view del item pulsado en el recycler view, y la posición en la lista.
-        // Como ejemplo mostramos la posición con Toast en el centro de la pantalla
-        Toast toast = Toast.makeText(this, "Pulsado Item: " + posicion, Toast.LENGTH_SHORT);
+
+
+        String texto = ((TextView) view.findViewById(R.id.titulo)).getText().toString() + "\n";
+        texto += ((TextView) view.findViewById(R.id.autor)).getText().toString() +"\n";
+        texto += "Posición: " + posicion;
+
+        // Mostramos Toast en centro pantalla
+        Toast toast = Toast.makeText(this, texto, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
 

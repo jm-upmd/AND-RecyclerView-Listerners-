@@ -24,13 +24,16 @@ public class LibroAdapter extends RecyclerView.Adapter <LibroAdapter.LibroViewHo
         this.referenciaInterfaceClicLibro = eventoClicLibro;
     }
 
+     // Clase interna que implementa el viewholder
+     // Aquí se crean las referencias a los views de item y se implementa
+    // el listener para recogida de evento clic en el item
     public class LibroViewHolder extends RecyclerView.ViewHolder{
         // views que contendran la información del item
         public TextView titulo;
         public TextView autor;
         public ImageView imagen;
 
-
+        
         public LibroViewHolder(View itemView) {
             super(itemView);
             titulo =  itemView.findViewById(R.id.titulo);
@@ -48,10 +51,12 @@ public class LibroAdapter extends RecyclerView.Adapter <LibroAdapter.LibroViewHo
             });
         }
 
-    }
+    } // fin clase interna
 
-    // Clase interna que implementa el viewholder
-    // La la clase implementa la interface View.OnClikListener
+    // Otra forma de implementar la clase interna  viewholder
+    // En este caso la clase implementa el interface reescribiendo el método onclic
+    // y se pasa a sí misma (this) como paramentro de entrada al método setOnclicListener
+    // Se puede descomentar y comentar la anterior si se quere utilizar esta manera.
 
    /* public class LibroViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {

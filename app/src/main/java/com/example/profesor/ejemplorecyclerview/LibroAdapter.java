@@ -18,17 +18,43 @@ public class LibroAdapter extends RecyclerView.Adapter <LibroAdapter.LibroViewHo
 
 
     //(Listener) Para dotar de un mecanismo de listener al item
-    private ItemClickListener clickListener;
+    private EventoClicLibro referenciaInterfaceClicLibro;
 
     // (Listener)
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.clickListener = itemClickListener;
+    public void setReferenciaInterfaceClicLibro(EventoClicLibro eventoClicLibro) {
+        this.referenciaInterfaceClicLibro = eventoClicLibro;
+    }
+
+    public class LibroViewHolder extends RecyclerView.ViewHolder{
+        // views que contendran la información del item
+        public TextView titulo;
+        public TextView autor;
+        public ImageView imagen;
+
+
+        public LibroViewHolder(View itemView) {
+            super(itemView);
+            titulo =  itemView.findViewById(R.id.titulo);
+            autor = itemView.findViewById(R.id.autor);
+            imagen = itemView.findViewById(R.id.imagen);
+
+            //(Listener)
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(referenciaInterfaceClicLibro != null)
+                        referenciaInterfaceClicLibro.alHacerClick(v,getAdapterPosition());
+
+                }
+            });
+        }
+
     }
 
     // Clase interna que implementa el viewholder
     // La la clase implementa la interface View.OnClikListener
 
-    public class LibroViewHolder extends RecyclerView.ViewHolder
+   /* public class LibroViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
 
        // views que contendran la información del item
@@ -52,11 +78,14 @@ public class LibroAdapter extends RecyclerView.Adapter <LibroAdapter.LibroViewHo
         // que hemos creado
         @Override
         public void onClick(View view) {
-            if(clickListener != null)
-                clickListener.onClick(view,getAdapterPosition());
+            if(referenciaInterfaceClicLibro != null)
+                referenciaInterfaceClicLibro.alHacerClick(view,getAdapterPosition());
 
         }
-    }  // Fin clase interna
+    }  // Fin clase interna*/
+
+
+
 
     // Constructor
     LibroAdapter(List<Libro> items){

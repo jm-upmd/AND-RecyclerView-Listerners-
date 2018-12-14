@@ -1,5 +1,4 @@
 package com.example.profesor.ejemplorecyclerview;
-//https://www.codexpedia.com/android/defining-item-click-listener-for-recyclerview-in-android/
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +6,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ItemClickListener {
+public class MainActivity extends AppCompatActivity implements EventoClicLibro {
     private List<Libro> listaLibros = new ArrayList<>();
     private RecyclerView recyclerView;
     private LibroAdapter mAdapter;
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         // Pasamos Listener que nos mandara la view y posición
         // pulsada en el recycler view
         // Estos datos serán recogidos en el metod onclick(..) sobreescrito  más abajo
-        mAdapter.setClickListener(this);
+        mAdapter.setReferenciaInterfaceClicLibro(this);
 
         // Instancia un LayoutManager
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -137,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         });
     }
 
-    // Implementamos método onClick del interface ItemClickListener
+    // Implementamos método alHacerClick del interface EventoClicLibro
     @Override
-    public void onClick(View view, int posicion) {
+    public void alHacerClick(View view, int posicion) {
         // Aqui recogemos el view del item pulsado en el recycler view, y la posición en la lista.
 
 

@@ -1,4 +1,3 @@
-// https://www.codexpedia.com/android/defining-item-click-listener-for-recyclerview-in-android/
 package com.example.profesor.ejemplorecyclerview;
 
 import android.support.v7.widget.RecyclerView;

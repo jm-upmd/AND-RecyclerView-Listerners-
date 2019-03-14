@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -139,15 +140,22 @@ public class MainActivity extends AppCompatActivity implements EventoClicLibro {
     public void alHacerClick(View view, int posicion) {
         // Aqui recogemos el view del item pulsado en el recycler view, y la posición en la lista.
 
+        if(view.getId() == R.id.item_lista ){
+            Log.d("xxx","Pinchado en un RELATIVELAYOUT");
+            String texto = ((TextView) view.findViewById(R.id.idTitulo)).getText().toString() + "\n";
+            texto += ((TextView) view.findViewById(R.id.idAutor)).getText().toString() +"\n";
+            texto += "Posición: " + posicion;
 
-        String texto = ((TextView) view.findViewById(R.id.titulo)).getText().toString() + "\n";
-        texto += ((TextView) view.findViewById(R.id.autor)).getText().toString() +"\n";
-        texto += "Posición: " + posicion;
+            // Mostramos Toast en centro pantalla
+            Toast toast = Toast.makeText(this, texto, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        } else if(view.getId() == R.id.idTitulo) {
+            Log.d("xxx","Pinchado en el autor");
+        }
 
-        // Mostramos Toast en centro pantalla
-        Toast toast = Toast.makeText(this, texto, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+
+
 
     }
 }

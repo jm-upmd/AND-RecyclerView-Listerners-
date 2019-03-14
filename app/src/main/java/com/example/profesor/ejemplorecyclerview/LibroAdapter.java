@@ -36,9 +36,17 @@ public class LibroAdapter extends RecyclerView.Adapter <LibroAdapter.LibroViewHo
         
         public LibroViewHolder(View itemView) {
             super(itemView);
-            titulo =  itemView.findViewById(R.id.titulo);
-            autor = itemView.findViewById(R.id.autor);
+            titulo =  itemView.findViewById(R.id.idTitulo);
+            autor = itemView.findViewById(R.id.idAutor);
             imagen = itemView.findViewById(R.id.imagen);
+
+            titulo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(referenciaInterfaceClicLibro != null)
+                        referenciaInterfaceClicLibro.alHacerClick(v,getAdapterPosition());
+                }
+            });
 
             //(Listener)
             itemView.setOnClickListener(new View.OnClickListener() {

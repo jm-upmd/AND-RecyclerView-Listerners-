@@ -9,7 +9,8 @@
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp">
+    android:paddingTop="16dp"
+    android:id="@+id/item_lista">
 
     <ImageView
         android:id="@+id/imagen"
@@ -18,7 +19,7 @@
         android:src="@drawable/l19248" />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/idAutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imagen"
@@ -30,11 +31,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/autor"
+        android:id="@+id/idTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/titulo"
-        android:layout_below="@id/titulo"
+        android:layout_below="@id/idAutor"
+        android:layout_alignLeft="@id/idAutor"
         android:text="Autor del Libro"
         android:textColor="@android:color/black" />
 
